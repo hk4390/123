@@ -1,0 +1,44 @@
+pipeline
+ {
+    agent {label 'hemanth'}
+
+    stages 
+{
+       stage ('clone sources') {
+        steps {
+        git url: 'https://github.com/RavitejaAdepudi/javawar.git'
+        }
+       }
+        stage ('Compile Stage') 
+{
+
+            steps
+ {
+               
+                    sh 'mvn -f pom.xml clean install'
+                
+            }
+            
+        }
+
+        stage ('Testing Stage')
+ {
+
+            steps
+ {
+                
+                    sh 'mvn -f pom.xml test'
+                }
+            
+        }
+        stage('Deploy to Tomcat')
+{
+        steps
+ {
+        sh 'cp -r /opt/jenkins_slave/workspace/MASTER_SLAVE_SCRIPT/target/* /opt/apache-tomcat-8.5.4/webapps/'
+        }
+        }
+
+}
+        
+    }
