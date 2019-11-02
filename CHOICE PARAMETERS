@@ -1,0 +1,18 @@
+pipeline 
+{
+    agent any
+    parameters 
+	{
+        choice(name: 'COMPANY', choices: ['HCL', 'IFFCO', 'WIPRO'], description: 'Pick something')
+    }
+        stages 
+		{
+          stage('Sample')   
+            {
+               steps
+              {
+                 echo "choice: ${params.COMPANY}" 
+              }
+            }
+		}
+}
