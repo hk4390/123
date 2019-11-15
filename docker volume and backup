@@ -1,0 +1,12 @@
+version: '3.1'       #To create a volume and mapping for tomcat logs backup in tomcat container 
+
+services:
+    alp:
+       image: tomcat
+       volumes:
+         - my-jenkins-volume:/usr/local/tomcat/logs
+            #command: sleep 5
+
+volumes:           #Volume Registration
+    my-jenkins-volume:
+      external: false
