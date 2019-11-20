@@ -1,0 +1,15 @@
+
+root@MASTER:/opt# vi prompt.yml
+
+
+---
+- hosts: atlanta
+  connection: ssh
+  become_user: root
+  gather_facts: true
+  vars_prompt:
+    - name: pkgname
+      prompt: Enter the Package namae u Want
+  tasks:
+    - name: uninstall the maven
+      apt: name='{{ pkgname }}' state=absent
