@@ -1,0 +1,14 @@
+root@MASTER:/opt# vi test.yml
+
+
+
+---
+- hosts: atlanta
+  connection: ssh
+  become_user: root
+  gather_facts: true
+  tasks:
+   - name: installing the maven
+     apt: name=maven state=present
+   - name: installing apache
+     apt: name=apache2 state=present
