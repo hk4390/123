@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------------[SCRIPT FOR STORE OUTPUT OF PLAYBOOK]-----------------------------------------
+root@ip-172-31-31-250:/opt# cat output.yml
+---
+- hosts: atlanta
+  connection: ssh
+  tasks:
+    - name: Run ls.sh and output "ls /"
+      command: 'ls -sh'
+      register: out
+
+    - debug: var=out.stdout_lines
+-----------------------------------------------------------OUTPUT-----------------------
+TASK [debug] ***********************************************************************************************************************************************************
+ok: [34.229.205.103] => {
+    "out.stdout_lines": [
+        "total 18M",
+        "4.0K apache-tomcat-8.5.4",
+        "8.9M apache-tomcat-8.5.4.tar.gz",
+        "8.9M apache-tomcat-8.5.4.tar.gz.1",
+        "4.0K snap"
+    ]
+}
