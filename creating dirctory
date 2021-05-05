@@ -1,0 +1,7 @@
+---
+ - hosts: localhosts
+   tasks:
+   - name: ccreating directory
+     file:
+        path: /root/hemdir.test
+        state: directory
